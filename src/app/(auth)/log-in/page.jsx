@@ -28,6 +28,7 @@ export default function LoginPage() {
       callbackURL: "/",
     });
     console.log("after login data" ,  resData, error);
+    toast.success("log in Done")
   };
 
   return (

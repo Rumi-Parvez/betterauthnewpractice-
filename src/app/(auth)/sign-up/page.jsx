@@ -10,9 +10,10 @@ import {
   Input,
   Label,
   TextField,
+  toast,
 } from "@heroui/react";
 
-import { signUp } from "../../../lib/auth-client";
+import { signIn, signUp } from "../../../lib/auth-client";
 
 export default function SignUppage() {
 
@@ -33,7 +34,21 @@ export default function SignUppage() {
     });
 
     console.log("response:", resData , error);
+    
   };
+
+  const handleclickgoogle = async ()=>{
+      const resdata = await signIn.social({
+        provider: 'google'
+      })
+      console.log(resdata);
+  }
+  const handleclickgithub = async ()=>{
+      const resdata = await signIn.social({
+        provider: 'github'
+      })
+      console.log(resdata);
+  }
 
   return (
     <div className="flex justify-center items-center my-30">
@@ -112,7 +127,7 @@ export default function SignUppage() {
         </TextField>
 
         <div className="flex gap-2">
-          <Button type="submit">
+          <Button type="submit" onClick={()=> toast.success("Wellcome! you are a member of this site")}>
             <Check />
             Submit
           </Button>
@@ -121,6 +136,8 @@ export default function SignUppage() {
             Reset
           </Button>
         </div>
+        <Button onClick={handleclickgoogle}>Google</Button>
+        <Button onClick={handleclickgithub}>Github</Button>
       </Form>
     </div>
   );
