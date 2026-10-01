@@ -4,7 +4,7 @@ import { MongoClient } from "mongodb";
 import { Resend } from 'resend';
 
 
-
+ 
 
 const client = new MongoClient(process.env.BETTER_AUTH_MONGO_BD_URL);
 
